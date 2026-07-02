@@ -42,6 +42,21 @@
                         {{ station.hasPublicFacilities ? 'Vorhanden' : 'Keine' }}
                     </span>
                 </div>
+                <div class="info-row mobility-row">
+                  <span class="label">Mobilitätsservice:</span>
+                  <div class="value-container">
+                    <template v-if="station.hasMobilityService && station.hasMobilityService !== 'no'">
+                      <span class="badge success">Vorhanden</span>
+                        <div class="service-info" v-if="station.hasMobilityService !== 'yes'">
+                          {{ station.hasMobilityService }}
+                        </div>
+                    </template>
+        
+                    <template v-else>
+                      <span class="badge neutral">Keine</span>
+                    </template>
+                  </div>
+                </div>
             </div>
         </div>
     </div>
@@ -111,7 +126,7 @@
   box-sizing: border-box;
 }
 
-/* --- Header --- */
+
 header {
   text-align: center;
   margin-bottom: 3rem;
@@ -129,7 +144,7 @@ header p {
   font-size: 1.1rem;
 }
 
-/* --- Suchbereich --- */
+
 .search-section {
   display: flex;
   justify-content: center;
@@ -178,7 +193,7 @@ header p {
   cursor: not-allowed;
 }
 
-/* --- Status- & Info-Meldungen --- */
+
 .status {
   text-align: center;
   padding: 1rem;
@@ -213,20 +228,20 @@ header p {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-/* --- Das Stations-Grid --- */
+
 .stations-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.5rem;
 }
 
-/* --- Station Card (Standard: Nicht barrierefrei) --- */
+
 .station-card {
   background: white;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-  border-left: 5px solid #d1d5db; /* Grauer Rand standardmäßig */
+  border-left: 5px solid #d1d5db; 
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -235,13 +250,13 @@ header p {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Visuelles Highlight: Barrierefreier Bahnhof */
+
 .station-card.is-accessible {
-  border-left-color: #2ecc71; /* Grüner Rand */
-  background-color: #f7fdf9; /* Ganz leicht grüner Hintergrund */
+  border-left-color: #2ecc71; 
+  background-color: #f7fdf9; 
 }
 
-/* --- Card Details --- */
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -284,7 +299,7 @@ header p {
   color: #4b5563;
 }
 
-/* --- Badges --- */
+
 .badge {
   font-size: 0.85rem;
   font-weight: 600;
@@ -305,6 +320,31 @@ header p {
 .badge.neutral {
   background-color: #e5e7eb;
   color: #374151;
+}
+
+.mobility-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    margin-bottom: 12px;
+}
+
+
+.value-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    text-align: right;
+    max-width: 60%; 
+}
+
+
+.service-info {
+    font-size: 0.85rem;
+    color: #4a5568;
+    margin-top: 6px;
+    line-height: 1.3;
+    font-weight: normal;
 }
 
 /* Responsive Anpassung für sehr kleine Bildschirme */
