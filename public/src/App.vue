@@ -20,7 +20,7 @@
 
   <main v-if="stations.length > 0 && !loading">
     <div class="stats">
-        {{ stations.length }} Bahnhöf/Bahnhöfe gefunden
+        {{ stations.length }} Bahnhof/Bahnhöfe gefunden
     </div>
 
     <div class="stations-grid">
