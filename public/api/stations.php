@@ -11,10 +11,11 @@ if (empty($search)) {
     exit;
 }
 
+require_once __DIR__ . '/config.php';
 
 //API Keys & url
-$clientId = "f1533e6317231e50c6da6a98cfe685c5";
-$apiKey ="40a7a9bc25829e6b7163883cb4aa8a0c";
+$clientId = DB_CLIENT_ID;
+$apiKey =DB_API_KEY;
 
 $apiSearchTerm ="*".$search."*";
 $url = "https://apis.deutschebahn.com/db-api-marketplace/apis/station-data/v2/stations?searchstring=" . urlencode($apiSearchTerm);
